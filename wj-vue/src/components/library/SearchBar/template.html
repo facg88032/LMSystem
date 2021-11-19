@@ -1,0 +1,18 @@
+<div style="margin-bottom: 30px;display: flex;justify-content: center;align-items: center">
+    <el-input
+            @keyup.enter.native="searchClick"
+            placeholder="通过书名或作者搜索..."
+
+            size="small"
+            style="width: 400px;margin-right: 10px"
+            v-model="keywords">
+        <template #prefix>
+            <el-icon class="el-input__icon"><i-search/></el-icon>
+        </template>
+        <template #append>
+            <el-button  @click="searchClick">
+                搜尋 <el-icon class="el-icon--left"><i-search /></el-icon>
+            </el-button>
+        </template>
+    </el-input>
+</div>

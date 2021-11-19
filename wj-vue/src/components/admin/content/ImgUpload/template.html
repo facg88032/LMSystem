@@ -1,0 +1,19 @@
+<el-upload
+        ref="upload"
+        action="http://localhost:8443/api/admin/content/books/covers"
+        with-credentials
+        :before-upload="beforeUpload"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :before-remove="beforeRemove"
+        :on-success="handleSuccess"
+        multiple
+        :limit="1"
+        :on-exceed="handleExceed"
+        :file-list="fileList"
+>
+    <el-button size="small" type="primary">Upload</el-button>
+    <template #tip>
+            jpg/png files with a size less than 5MB
+    </template>
+</el-upload>

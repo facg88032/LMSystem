@@ -1,0 +1,11 @@
+<div>
+    <el-container>
+        <el-aside style="width: 200px;margin-top: 20px">
+            <switch></switch>
+            <SideMenu @indexSelect="listByCategory" ref="sideMenu"/>
+        </el-aside>
+        <el-main>
+            <Books class="books-area" ref="booksArea"/>
+        </el-main>
+    </el-container>
+</div>

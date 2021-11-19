@@ -1,0 +1,25 @@
+<div>
+    <el-menu
+            :default-active="'/index'"
+            router
+            mode="horizontal"
+            background-color="white"
+            text-color="#222"
+            active-text-color="red"
+            style="min-width: 1300px"
+
+    >
+        <el-menu-item v-for="item in navList" :key="item.navItem" :index="item.name">
+            {{ item.navItem }}
+        </el-menu-item >
+<!--        <el-menu-item  @click="logout"  style="margin-left: auto;">-->
+<!--            <el-icon class="el-icon-switch-button"-->
+<!--                     style="font-size: 30px;color: #222;">-->
+<!--                <i-switch-button/>-->
+<!--            </el-icon>-->
+<!--        </el-menu-item>-->
+
+            <span style="position:absolute;padding-top: 10px;right: 43%; font-size: 20px;font-weight: bold">White Jotter - Your Mind Palace</span>
+
+    </el-menu>
+</div>

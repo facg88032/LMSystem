@@ -1,0 +1,12 @@
+<el-menu
+        :default-active="cid"
+        @select="handleSelect"
+        active-text-color="red">
+    <el-menu-item v-for="(item,index) in sideList" :key="index" :index="item.id">
+       <el-icon>
+           <i-menu/>
+       </el-icon>
+        <span slot="title">{{item.class}}</span>
+    </el-menu-item>
+
+</el-menu>

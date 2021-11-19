@@ -1,0 +1,18 @@
+<body id="paper">
+<el-form :model="registerForm" :rules="rules" class="login-container" label-position="top"
+          label-width="0px" v-loading="loading">
+    <h3 class="login_title">Register</h3>
+    <el-form-item prop="username">
+        <!--        <el-form-item label="Username">-->
+        <el-input type="text" v-model="registerForm.username"  auto-complete="off" placeholder="Username"></el-input>
+    </el-form-item>
+    <el-form-item prop="password">
+        <!--        <el-form-item label="Password">-->
+        <el-input type="password" v-model="registerForm.password" auto-complete="off" placeholder="Password"></el-input>
+    </el-form-item>
+    <el-form-item >
+        <el-button type="primary" style="width:100%;background: #505458;border: none" v-on:click="register">Register</el-button>
+    </el-form-item>
+</el-form>
+
+</body>
