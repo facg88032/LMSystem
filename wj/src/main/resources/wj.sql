@@ -41,7 +41,7 @@ insert  into `admin_menu`(`id`,`path`,`name`,`name_zh`,`icon_cls`,`component`,`p
 (5,'/admin','System','系統配置','Tools','AdminIndex/index',0),
 (6,'/admin/user/profile','Profile','用戶訊息',NULL,'user/UserProfile',3),
 (7,'/admin/user/role','Role','角色配置',NULL,'user/Role',3),
-(8,'/admin/content/book','BookManagement','圖書館裡',NULL,'content/BookManagement',4),
+(8,'/admin/content/book','BookManagement','圖書館裡',NULL,'content/BookManagement/index',4),
 (9,'/admin/content/banner','BannerManagement','廣告管理',NULL,'content/BannerManagement',4),
 (10,'/admin/content/article','ArticleManagement','文章管理',NULL,'content/ArticleManagement',4);
 
@@ -180,7 +180,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `fk_book_category_on_cid` (`cid`),
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 /*Data for the table `book` */
 
@@ -204,8 +204,8 @@ insert  into `book`(`id`,`cover`,`title`,`author`,`date`,`press`,`abs`,`cid`) va
 (67,'https://i.loli.net/2019/04/10/5cada9870c2ab.jpg','中心与边缘','[美] 希尔斯','2019-3','译林出版社','美国著名社会学家爱德华·希尔斯的主要研究成果包括他对“克里斯玛”、“中心”和“边缘”等概念的解释，以及他对“大众社会”一词的修正，这些研究对分析政治和文化领导力以及社会凝聚力具有重要价值。本书对希尔斯数十载社会理论研究进行了全面而详细的总结，为解释与探究当代社会的结构与变化提供了极具科学性的参考依据。',3),
 (68,'https://i.loli.net/2019/04/10/5cad643643d4c.jpg','水浒群星闪耀时','李黎','2019-4','上海文艺出版社','本书以众所周知的梁山英雄为写作对象，重点书写其上山后、招安前的日常生活，涉及他们的喜怒哀乐、同类中人、乡愁怀旧、未来憧憬、命运追问等。书中涉及宋江、武松、鲁智深、李俊、燕青等等耳熟能详的人物而显得有些“改编”与水浒研究的意味，但鉴于所有人物皆为虚构，本书稿的内容是虚构之上的虚构，旨在宏大叙事的语境下突出个人的细微之处和命运感。',1),
 (69,'https://i.loli.net/2019/04/10/5cad63931ce27.jpg','谋杀狄更斯','[美] 丹·西蒙斯 ','2019-4','上海文艺出版社','“狄更斯的那场意外灾难发生在1865年6月9日，那列搭载他的成功、平静、理智、手稿与情妇的火车一路飞驰，迎向铁道上的裂隙，突然触目惊心地坠落了。”',1),
-(70,'https://i.loli.net/2021/11/03/svDekgdImrBPLO6.jpg','像艺术家一样思考','[英] 威尔·贡培兹','2019-4','湖南美术出版社','归纳成就艺术大师的 10 个关键词\n\n揭示大师们的创作秘辛\n\n凝聚 BBC 艺术频道主编威尔·贡培兹职业生涯的所见、所知、所想\n\n·\n\n威尔·贡培兹是你能遇到的最好的老师\n\n——《卫报》',3),
-(111,'http://localhost:8443/api/file/c165e79d-fc64-4b4d-9c04-70f5d7836110.jpg','asda','asdas','dasd','adasda','sdasdas',5);
+(70,'https://i.loli.net/2021/11/03/svDekgdImrBPLO6.jpg','像艺术家一样思考','[英] 威尔·贡培兹','2019-4','湖南美术出版社','归纳成就艺术大师的 10 个关键词\n\n揭示大师们的创作秘辛\n\n凝聚 BBC 艺术频道主编威尔·贡培兹职业生涯的所见、所知、所想\n\n·\n\n威尔·贡培兹是你能遇到的最好的老师\n\n——《卫报》',1),
+(112,'http://localhost:8443/api/file/64ee9f6e-b634-429e-b1b8-82fecd33a7ca.jpg','aaa','aaa','2019-8','aaa','ttt',6);
 
 /*Table structure for table `category` */
 
