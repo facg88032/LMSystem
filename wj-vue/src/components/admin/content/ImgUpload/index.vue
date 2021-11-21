@@ -40,7 +40,7 @@ export default {
       return this.$confirm(`確定移除 ${file.name}?`)
     },
     handleSuccess(response) {
-      this.url = response
+      this.url = response.result
       this.$emit('onUpload')
       this.$message.warning('上傳成功')
     },
