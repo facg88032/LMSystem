@@ -29,6 +29,7 @@ public class MyWebConfigurer implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedOrigins("http://localhost:8080")
+                .allowedOrigins("http://localhost:8081")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .allowedHeaders("*");
     }
@@ -36,7 +37,7 @@ public class MyWebConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/api/file/**")
-                .addResourceLocations("file:" + "d:/vueSB/workspace/img/");
+                .addResourceLocations("file:" + "d:/LMSystem/workspace/img/");
     }
 
 

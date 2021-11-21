@@ -1,18 +1,21 @@
 package com.james.wj.controller;
 
 
+
 import com.james.wj.pojo.Book;
 import com.james.wj.result.Result;
 import com.james.wj.result.ResultFactory;
 import com.james.wj.service.BookService;
+import com.james.wj.service.CloudinaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+
 import java.util.UUID;
 
 @RestController
@@ -20,6 +23,10 @@ public class LibraryController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    CloudinaryService cloudinaryService;
+
 
     @GetMapping("/api/books")
     public Result list() throws Exception{
@@ -64,22 +71,27 @@ public class LibraryController {
 
 
 
+
+
     @PostMapping("/api/admin/content/books/covers")
-    public String coversUpload(MultipartFile file){
-        String folder = "D:/vueSB/workspace/img";
-        File imageFolder = new File(folder);
-        File f = new File(imageFolder, UUID.randomUUID()+ "." + file.getOriginalFilename()
-                .replaceAll("^.*\\.(.*)$", "$1"));
-        if (!f.getParentFile().exists())
-            f.getParentFile().mkdirs();
-        try {
-            file.transferTo(f);
-            String imgURL = "http://localhost:8443/api/file/" + f.getName();
-            return imgURL;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        }
+    public Result coversUpload(MultipartFile file){
+//        String folder = "D:/LMSystem/workspace/img";
+//        File imageFolder = new File(folder);
+//        File f = new File(imageFolder, UUID.randomUUID()+ "." + file.getOriginalFilename()
+//                .replaceAll("^.*\\.(.*)$", "$1"));
+//        if (!f.getParentFile().exists())
+//            f.getParentFile().mkdirs();
+//        try {
+//            file.transferTo(f);
+//            String imgURL = "http://localhost:8443/api/file/" + f.getName();
+//            return imgURL;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return "";
+//        }
+
+        String url = cloudinaryService.uploadFile(file);
+        return ResultFactory.buildSuccessResult(url);
 
     }
 
