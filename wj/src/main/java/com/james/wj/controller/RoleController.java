@@ -64,4 +64,10 @@ public class RoleController {
         return ResultFactory.buildSuccessResult("更新成功");
     }
 
+    @PostMapping("/api/admin/role/delete")
+    public Result deleteById(@RequestBody AdminRole adminRole){
+        adminRoleService.deleteById(adminRole.getId());
+        return ResultFactory.buildSuccessResult("刪除成功");
+    }
+
 }

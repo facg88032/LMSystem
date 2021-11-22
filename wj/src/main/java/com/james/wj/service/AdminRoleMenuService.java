@@ -38,5 +38,10 @@ public class AdminRoleMenuService {
         adminRoleMenuDao.saveAll(rms);
     }
 
+    @Transactional
+    public void deleteAllByRid(int rid){
+        adminRoleMenuDao.deleteAllByRid(rid);
+    }
+
 
 }

@@ -36,5 +36,10 @@ public class AdminRolePermissionService {
         });
         adminRolePermissionDao.saveAll(rps);
     }
+
+    @Transactional
+    public void deleteAllByRid(int rid){
+        adminRolePermissionDao.deleteAllByRid(rid);
+    }
 }
 

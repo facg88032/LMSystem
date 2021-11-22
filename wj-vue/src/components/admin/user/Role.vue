@@ -84,12 +84,13 @@
             width="120">
           <template #default="scope">
             <el-button
+                @click="editRole(scope.row)"
                 type="text"
-                size="small"
-                @click="editRole(scope.row)">
+                size="small">
               编辑
             </el-button>
             <el-button
+                @click=deleteRole(scope.row.id)
                 type="text"
                 size="small">
               移除
@@ -243,8 +244,24 @@ export default {
           console.log(resp.data.result)
         }
       })
-
-
+    },
+    deleteRole(id){
+      this.$confirm('將永久刪除此角色,是否繼續','提示',{
+        confirmButtonText: '確定',
+        cancelButtonText: '取消',
+        type: "warning"
+      }).then(()=>{
+        this.$axios.post('/admin/role/delete',{id:id}).then(resp =>{
+          if(resp && resp.data.code === 200){
+            this.listRoles();
+          }
+        }).catch(()=>{
+          this.$message({
+            type: 'info',
+            message: '已取消刪除'
+          })
+        })
+      })
     }
   }
 }

@@ -9,6 +9,7 @@ import com.james.wj.pojo.AdminUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,8 @@ public class AdminRoleService {
     AdminUserRoleService adminUserRoleService;
     @Autowired
     AdminRolePermissionService adminRolePermissionService;
+    @Autowired
+    AdminRoleMenuService adminRoleMenuService;
 
     public List<AdminRole> listWithPermsAndMenus(){
         List<AdminRole> roles = adminRoleDao.findAll();
@@ -60,6 +63,12 @@ public class AdminRoleService {
         return adminRoleDao.save(roleInDB);
     }
 
+    @Transactional
+    public void deleteById(int id){
+        adminRoleDao.deleteById(id);
+        adminRolePermissionService.deleteAllByRid(id);
+        adminRoleMenuService.deleteAllByRid(id);
+    }
 
 
 }
