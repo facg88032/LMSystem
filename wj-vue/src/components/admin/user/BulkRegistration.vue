@@ -75,6 +75,7 @@ export default {
           this.$alert('註冊成功','提示',{
             confirmButtonText:'確定'
           })
+          this.dialogFormVisible = false
           this.clear()
           this.$emit('onSubmit')
         }else{

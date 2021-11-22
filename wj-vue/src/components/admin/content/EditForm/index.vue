@@ -55,6 +55,9 @@ export default {
             category: this.form.category
           }).then(resp => {
         if (resp && resp.data.code === 200) {
+          this.$alert('新增成功','提示',{
+            confirmButtonText:'確定'
+          })
           this.dialogFormVisible = false
           this.clear()
           this.$emit('onSubmit')
