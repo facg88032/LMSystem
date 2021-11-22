@@ -26,11 +26,11 @@ public class WJRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        // 获取当前用户的所有权限
+        // 獲取當前用戶所有權限
         String username = principalCollection.getPrimaryPrincipal().toString();
         Set<String> permissions = adminPermissionService.listPermissionURLsByUser(username);
 
-        // 将权限放入授权信息中
+        // 將權限放入授權訊息中
         SimpleAuthorizationInfo s = new SimpleAuthorizationInfo();
         s.setStringPermissions(permissions);
         return s;

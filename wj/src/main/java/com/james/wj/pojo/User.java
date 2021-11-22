@@ -17,11 +17,12 @@ public class User {
     int id;
 
     @NotEmpty(message = "用戶名不能為空")
-    String username;
-    String password;
-    String salt;
-    String name;
-    String phone;
+    private String username;
+    private String password;
+    private String salt;
+    private String name;
+    private String phone;
+
     @Email(message = "請輸入正確的E-mail")
     private String email;
 
@@ -29,7 +30,6 @@ public class User {
 
     @Transient
     private List<AdminRole> roles;
-
 
     public int getId() {
         return id;

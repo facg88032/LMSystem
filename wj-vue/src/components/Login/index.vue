@@ -11,7 +11,6 @@ export default {
         username: '',
         password: '',
       },
-      // image: require('@/assets/logo.png'),
       responseResult: []
     }
   },
@@ -30,7 +29,7 @@ export default {
               this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
             }else {
               this.$alert(resp.data.message, '提示', {
-                confirmButtonText: '确定'
+                confirmButtonText: '確定'
               })
             }
           }

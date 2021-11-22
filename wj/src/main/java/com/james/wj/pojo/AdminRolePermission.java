@@ -13,14 +13,8 @@ public class AdminRolePermission {
     @Column(name = "id")
     private int id;
 
-    /**
-     * Role id.
-     */
     private int rid;
 
-    /**
-     * Permission id.
-     */
     private int pid;
 
     public int getId() {

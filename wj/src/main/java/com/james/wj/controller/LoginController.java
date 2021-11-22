@@ -27,7 +27,7 @@ public class LoginController {
 
     @RequestMapping(value = "/notLogin", method = RequestMethod.GET)
     public Result notLogin() {
-        String message = "尚未登入！";
+        String message = "尚未登入!";
         return ResultFactory.buildFailResult(message);
     }
 
@@ -64,7 +64,7 @@ public class LoginController {
                 return ResultFactory.buildFailResult("用戶名已存在");
         }
 
-        return ResultFactory.buildFailResult("未知错误");
+        return ResultFactory.buildFailResult("未知錯誤");
     }
 
 

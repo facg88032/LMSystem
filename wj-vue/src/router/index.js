@@ -1,9 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/components/Login'
-import AppIndex from '@/components/home/Appindex'
-import Home from '@/components/Home'
-import Library from '@/components/library/LibraryIndex'
-import Register from '@/components/Register'
+
 import store from '@/store'
 const axios = require('axios')
 const routes = [
@@ -13,36 +9,30 @@ const routes = [
   },
   { path: '/home',
     name: 'Home',
-    component: Home,
+    component: () => import('@/components/Home'),
     redirect: '/index',
     children:[
       {
         path: '/index',
         name: 'AppIndex',
-        component: AppIndex,
-        // meta: {
-        //   requireAuth: true
-        // }
+        component: () => import('@/components/home/Appindex'),
       },
       {
         path: '/library',
         name: 'Library',
-        component: Library,
-        // meta: {
-        //   requireAuth: true
-        // }
+        component: () => import('@/components/library/LibraryIndex'),
       }
     ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: ()=> import('@/components/Login')
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: () => import('@/components/Register')
   },
   {
     path: '/admin',
@@ -51,16 +41,16 @@ const routes = [
     meta: {
       requireAuth: true
     },
-    // children:[
-    //   {
-    //     path: '/admin/dashboard',
-    //     name: 'Dashboard',
-    //     component: () => import('../components/admin/dashboard/admin/index'),
-    //     meta: {
-    //       requireAuth: true
-    //     }
-    //   }
-    // ]
+    children:[
+      {
+        path: '/admin/dashboard',
+        name: 'Dashboard',
+        component: () => import('../components/admin/dashboard/admin/index'),
+        meta: {
+          requireAuth: true
+        }
+      }
+    ]
   }
 ]
 
@@ -74,11 +64,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
+  //訪問admin前 初始化加載menu
   if (store.state.username && to.path.startsWith('/admin')) {
     initAdminMenu(router, store)
   }
 
-  // 已登录状态下访问 login 页面直接跳转到后台首页
+  // 已登入狀態訪問login 跳轉到admin/dashboard
   if (store.state.username && to.path.startsWith('/login')) {
     next({
       path: 'admin/dashboard'

@@ -68,7 +68,7 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
                 System.out.println("訪問權限：" + requestAPI + "驗證成功");
                 return true;
             } else {
-                System.out.println("當前用戶沒有放問接口" + requestAPI + "的權限");
+                System.out.println("當前用戶沒有訪問接口" + requestAPI + "的權限");
                 return false;
             }
         }

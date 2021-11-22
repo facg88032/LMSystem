@@ -34,14 +34,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 //            }
 //        }
 //        return true;
-        // 放行 options 请求，否则无法让前端带上自定义的 header 信息，导致 sessionID 改变，shiro 验证失败
+        // 放行 options 請求
         if (HttpMethod.OPTIONS.toString().equals(httpServletRequest.getMethod())) {
             httpServletResponse.setStatus(HttpStatus.NO_CONTENT.value());
             return true;
         }
 
         Subject subject = SecurityUtils.getSubject();
-        // 使用 shiro 验证
+        // 使用 shiro 驗證
         if (!subject.isAuthenticated() && !subject.isRemembered()) {
             return false;
         }

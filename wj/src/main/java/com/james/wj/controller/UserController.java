@@ -42,6 +42,6 @@ public class UserController {
     @PutMapping("/api/admin/user/password")
     public Result resetPassword(@Valid @RequestBody  User requestUser) {
         userService.resetPassword(requestUser);
-        return ResultFactory.buildSuccessResult("重置密码成功");
+        return ResultFactory.buildSuccessResult("重置密碼成功");
     }
 }

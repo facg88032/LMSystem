@@ -37,26 +37,7 @@ export default {
           _this.books = resp.data.result
         }
       })
-    },
-    // deleteBook(id) {
-    //   this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
-    //     confirmButtonText: '确定',
-    //     cancelButtonText: '取消',
-    //     type: 'warning'
-    //   }).then(() => {
-    //         this.$axios
-    //             .post('/delete', {id: id}).then(resp => {
-    //           if (resp && resp.status === 200) {
-    //             this.loadBooks()
-    //           }
-    //         })
-    //       }
-    //   ).catch(() => {
-    //     this.$message({
-    //       type: 'info',
-    //       message: '已取消删除'
-    //     })
-    //   })
+    }
   }
 }
 

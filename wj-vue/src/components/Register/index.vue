@@ -8,8 +8,8 @@ export default {
   data() {
     return {
       rules: {
-        username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
-        password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
+        username: [{required: true, message: '用戶名不能為空', trigger: 'blur'}],
+        password: [{required: true, message: '密碼不能為空', trigger: 'blur'}]
       },
       registerForm:{
         username: '',
@@ -28,13 +28,13 @@ export default {
             password: this.registerForm.password
           }).then(resp =>{
         if (resp.data.code === 200) {
-          this.$alert('注册成功', '提示', {
-            confirmButtonText: '确定'
+          this.$alert('註冊成功', '提示', {
+            confirmButtonText: '確定'
           })
           _this.$router.replace('/login')
         } else {
           this.$alert(resp.data.message, '提示', {
-            confirmButtonText: '确定'
+            confirmButtonText: '確定'
           })
         }
           }

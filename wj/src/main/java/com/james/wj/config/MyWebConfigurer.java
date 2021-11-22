@@ -36,8 +36,8 @@ public class MyWebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/api/file/**")
-                .addResourceLocations("file:" + "d:/LMSystem/workspace/img/");
+        registry.addResourceHandler("/api/file/**");
+//                .addResourceLocations("file:" + "d:/LMSystem/workspace/img/");
     }
 
 

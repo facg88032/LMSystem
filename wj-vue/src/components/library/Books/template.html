@@ -16,8 +16,7 @@
                 {{ item.abs }}
             </template>
             <el-card style="width: 150px;margin-bottom: 20px;height: 240px;float: left;margin-right: 15px" class="book"
-                     bodyStyle="padding:10px" shadow="hover"
-            >
+                     bodyStyle="padding:10px" shadow="hover">
                 <div class="cover">
                     <img :src="item.cover" alt="封面">
                 </div>
@@ -28,9 +27,7 @@
                 </div>
                 <div class="author">{{ item.author }}</div>
             </el-card>
-
         </el-tooltip>
-<!--        <EditForm @onSubmit="loadBooks()" ref="edit"></EditForm>-->
 
     </el-row>
     <el-row>
