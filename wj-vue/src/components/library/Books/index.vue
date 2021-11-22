@@ -12,7 +12,7 @@ export default {
     return {
       books: [],
       currentPage: 1,
-      pageSize: 17
+      pageSize: 15
     }
   },
   mounted() {
@@ -38,28 +38,25 @@ export default {
         }
       })
     },
-    deleteBook(id) {
-      this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-            this.$axios
-                .post('/delete', {id: id}).then(resp => {
-              if (resp && resp.status === 200) {
-                this.loadBooks()
-              }
-            })
-          }
-      ).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        })
-      })
-
-    },
-
+    // deleteBook(id) {
+    //   this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
+    //     confirmButtonText: '确定',
+    //     cancelButtonText: '取消',
+    //     type: 'warning'
+    //   }).then(() => {
+    //         this.$axios
+    //             .post('/delete', {id: id}).then(resp => {
+    //           if (resp && resp.status === 200) {
+    //             this.loadBooks()
+    //           }
+    //         })
+    //       }
+    //   ).catch(() => {
+    //     this.$message({
+    //       type: 'info',
+    //       message: '已取消删除'
+    //     })
+    //   })
   }
 }
 
@@ -67,16 +64,16 @@ export default {
 
 <style scoped>
 .cover {
-  width: 115px;
-  height: 172px;
+  width: 140px;
+  height: 160px;
   margin-bottom: 7px;
   overflow: hidden;
   cursor: pointer;
 }
 
 img {
-  width: 115px;
-  height: 172px;
+  width: 140px;
+  height: 150px;
   /*margin: 0 auto;*/
 }
 

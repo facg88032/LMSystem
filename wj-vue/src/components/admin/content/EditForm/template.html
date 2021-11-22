@@ -1,10 +1,10 @@
 <div style="text-align: left">
-    <el-button class="add-button" type="success" @click="dialogFormVisible = true">添加書籍</el-button>
+    <el-button class="add-button" type="success" @click="dialogFormVisible = true">新增書籍</el-button>
     <el-dialog
-        title="添加/修改圖書"
-        v-model="dialogFormVisible"
-        @close="clear">
-        <el-form v-model="form" style="text-align: left" ref="dataForm">
+            title="新增/修改圖書"
+            v-model="dialogFormVisible"
+            @close="clear">
+        <el-form :model="form" style="text-align: left" label-position="left" ref="dataForm">
             <el-form-item label="書名" :label-width="formLabelWidth" prop="title">
                 <el-input v-model="form.title" autocomplete="off" placeholder="不加《》"></el-input>
             </el-form-item>
@@ -19,7 +19,7 @@
             </el-form-item>
             <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
                 <el-input v-model="form.cover" autocomplete="off" placeholder="圖片 URL"></el-input>
-                            <ImgUpload @onUpload="uploadImg" ref="imgUpload"></ImgUpload>
+                <ImgUpload @onUpload="uploadImg" ref="imgUpload"></ImgUpload>
             </el-form-item>
             <el-form-item label="簡介" :label-width="formLabelWidth" prop="abs">
                 <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -38,9 +38,11 @@
                 <el-input type="hidden" v-model="form.id" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
-        <div slot="footer" class="dialog-footer">
+        <template #footer>
+          <span class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取消</el-button>
             <el-button type="primary" @click="onSubmit">確定</el-button>
-        </div>
+          </span>
+        </template>
     </el-dialog>
 </div>

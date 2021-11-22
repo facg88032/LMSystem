@@ -56,8 +56,11 @@ export default {
           }).then(resp => {
         if (resp && resp.data.code === 200) {
           this.dialogFormVisible = false
+          this.clear()
           this.$emit('onSubmit')
         }
+      }).catch(failResponse => {
+        console.log(failResponse)
       })
     },
     uploadImg(){

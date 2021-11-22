@@ -19,11 +19,11 @@
                     type="selection"
                     width="55">
             </el-table-column>
-<!--            <el-table-column type="expand">-->
-<!--                <template #default="props">-->
-<!--                    <p>摘要: {{ props.row.abs }}</p>-->
-<!--                </template>-->
-<!--            </el-table-column>-->
+            <el-table-column type="expand">
+                <template #default="props">
+                    <p>摘要: {{ props.row.abs }}</p>
+                </template>
+            </el-table-column>
             <el-table-column
                     prop="title"
                     label="書名"
@@ -70,8 +70,8 @@
             </el-table-column>
         </el-table>
         <div style="margin: 20px 0 20px 0;float: left">
-            <el-button>取消选择</el-button>
-            <el-button>批量删除</el-button>
+            <el-button>取消選擇</el-button>
+            <el-button>刪除</el-button>
         </div>
     </el-card>
 </div>

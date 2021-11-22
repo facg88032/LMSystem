@@ -15,10 +15,10 @@
                 {{ item.press }}<br>
                 {{ item.abs }}
             </template>
-            <el-card style="width: 135px;margin-bottom: 20px;height: 260px;float: left;margin-right: 15px" class="book"
+            <el-card style="width: 150px;margin-bottom: 20px;height: 240px;float: left;margin-right: 15px" class="book"
                      bodyStyle="padding:10px" shadow="hover"
             >
-                <div class="cover" @click="editBook(item)">
+                <div class="cover">
                     <img :src="item.cover" alt="封面">
                 </div>
                 <div class="info">
@@ -27,10 +27,6 @@
                     </div>
                 </div>
                 <div class="author">{{ item.author }}</div>
-                <el-icon style="vertical-align: middle;" @click="deleteBook(item.id)">
-                    <i-delete />
-                </el-icon>
-
             </el-card>
 
         </el-tooltip>

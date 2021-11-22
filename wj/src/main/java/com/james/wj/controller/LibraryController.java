@@ -70,9 +70,6 @@ public class LibraryController {
     }
 
 
-
-
-
     @PostMapping("/api/admin/content/books/covers")
     public Result coversUpload(MultipartFile file){
 //        String folder = "D:/LMSystem/workspace/img";
