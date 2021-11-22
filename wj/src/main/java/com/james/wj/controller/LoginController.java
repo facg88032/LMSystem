@@ -53,29 +53,18 @@ public class LoginController {
 
     @PostMapping("api/register")
     public Result register(@RequestBody User user) {
-        String username = user.getUsername();
-        String password = user.getPassword();
-        username = HtmlUtils.htmlEscape(username);
-        user.setUsername(username);
 
-        System.out.println(username);
-        System.out.println(password);
-
-        boolean exist = userService.isExist(username);
-        if (exist) {
-            String message = "用戶名已被使用";
-            return ResultFactory.buildFailResult(message);
+        int status = userService.register(user);
+        switch (status) {
+            case 0:
+                return ResultFactory.buildFailResult("用戶名和密碼不為空");
+            case 1:
+                return ResultFactory.buildSuccessResult("註冊成功");
+            case 2:
+                return ResultFactory.buildFailResult("用戶名已存在");
         }
 
-
-        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
-        int times = 2;
-        String encodedPassword = new SimpleHash("md5", password, salt, times).toString();
-
-        user.setSalt(salt);
-        user.setPassword(encodedPassword);
-        userService.add(user);
-        return ResultFactory.buildSuccessResult(user);
+        return ResultFactory.buildFailResult("未知错误");
     }
 
 

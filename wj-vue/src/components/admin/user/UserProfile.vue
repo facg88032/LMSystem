@@ -39,7 +39,7 @@
         <el-breadcrumb-item>用户信息</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
-    <!--    <bulk-registration @onSubmit="listUsers()"></bulk-registration>-->
+        <bulk-registration @onSubmit="listUsers()"></bulk-registration>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
           :data="users"
@@ -101,6 +101,7 @@
               编辑
             </el-button>
             <el-button
+                @click="deleteUser(scope.row.id)"
                 type="text"
                 size="small">
               移除
@@ -117,10 +118,10 @@
 </template>
 
 <script>
-// import BulkRegistration from './BulkRegistration'
+import BulkRegistration from './BulkRegistration'
 export default {
   name: 'UserProfile',
-  // components: {BulkRegistration},
+  components: {BulkRegistration},
   data() {
     return {
       users: [],
@@ -219,6 +220,24 @@ export default {
         if (resp && resp.data.code === 200) {
           this.$alert('密碼已經重製為 123')
         }
+      })
+    },
+    deleteUser(id){
+      this.$confirm('將永久刪除此用戶,是否繼續','提示',{
+        confirmButtonText: '確定',
+        cancelButtonText: '取消',
+        type: "warning"
+      }).then(()=>{
+        this.$axios.post('/admin/user/delete',{id:id}).then(resp =>{
+          if(resp && resp.data.code === 200){
+            this.listUsers();
+          }
+        }).catch(()=>{
+          this.$message({
+            type: 'info',
+            message: '已取消刪除'
+          })
+        })
       })
     }
   }
