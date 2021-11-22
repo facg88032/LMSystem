@@ -25,6 +25,7 @@ public class AdminUserRoleService {
         adminUserRoleDao.save(adminUserRole);
     }
 
+    @Transactional
     public void deleteByUid(int uid){
         adminUserRoleDao.deleteAllByUid(uid);
     }
