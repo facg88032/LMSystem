@@ -21,6 +21,12 @@ public class UserController {
         return ResultFactory.buildSuccessResult(userService.list());
     }
 
+    @PostMapping("/api/admin/delete")
+    public Result delete(@RequestBody User requestUser){
+        userService.deleteById(requestUser.getId());
+        return ResultFactory.buildSuccessResult("刪除成功");
+    }
+
     @PutMapping("/api/admin/user")
     public Result editUser(@RequestBody User requestUser){
         List<AdminRole> roles = requestUser.getRoles();

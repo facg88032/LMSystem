@@ -21,6 +21,14 @@ public class AdminUserRoleService {
         return adminUserRoleDao.findAllByUid(uid);
     }
 
+    public void addRelate(AdminUserRole adminUserRole){
+        adminUserRoleDao.save(adminUserRole);
+    }
+
+    public void deleteByUid(int uid){
+        adminUserRoleDao.deleteAllByUid(uid);
+    }
+
     @Transactional
     public void saveRoleChanges(int uid , List<AdminRole> roles){
         adminUserRoleDao.deleteAllByUid(uid);
@@ -34,5 +42,7 @@ public class AdminUserRoleService {
         adminUserRoleDao.saveAll(urs);
 
     }
+
+
 
 }
