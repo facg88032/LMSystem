@@ -40,7 +40,7 @@
         <el-breadcrumb-item>角色配置</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
-<!--    <role-create @onSubmit="listRoles()"></role-create>-->
+    <RoleCreate @onSubmit="listRoles()"></RoleCreate>
     <el-card style="margin: 18px 2%;width: 95%">
       <el-table
           :data="roles"
@@ -107,8 +107,10 @@
 </template>
 
 <script>
+import RoleCreate from './RoleCreate'
 export default {
   name: "Role",
+  components:{RoleCreate},
   data(){
     return {
       dialogFormVisible: false,

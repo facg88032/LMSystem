@@ -31,22 +31,24 @@ public class RoleController {
         return ResultFactory.buildSuccessResult(adminRoleService.listWithPermsAndMenus());
     }
 
+    @PostMapping("/api/admin/role")
+    public Result createRole(@RequestBody AdminRole requsetRole){
+        adminRoleService.addOrUpdate(requsetRole);
+        return ResultFactory.buildSuccessResult("新增成功");
+    }
+
     @PutMapping("/api/admin/role")
     public Result editRole(@RequestBody AdminRole requsetRole) {
         adminRoleService.addOrUpdate(requsetRole);
         adminRolePermissionService.savePermChanges(requsetRole.getId(), requsetRole.getPerms());
-        String message = "修改角色訊息成功";
-        return ResultFactory.buildSuccessResult(message);
+        return ResultFactory.buildSuccessResult("修改角色訊息成功");
     }
-
 
     @PutMapping("/api/admin/role/status")
     public Result upateRoleStatus(@RequestBody AdminRole requestrole) {
         AdminRole adminRole = adminRoleService.updateRoleStatus(requestrole);
-        String message = "用戶"+adminRole.getNameZh()+"更新成功";
-        return ResultFactory.buildSuccessResult(message);
+        return ResultFactory.buildSuccessResult("用戶"+adminRole.getNameZh()+"更新成功");
     }
-
 
     @GetMapping("/api/admin/role/perm")
     public Result listAllPerms() {
