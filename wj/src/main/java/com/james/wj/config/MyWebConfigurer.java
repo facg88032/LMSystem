@@ -29,7 +29,7 @@ public class MyWebConfigurer implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedOrigins("http://localhost:8080")
-                .allowedOrigins("http://localhost:8081")
+//                .allowedOrigins("http://localhost:8081")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .allowedHeaders("*");
     }

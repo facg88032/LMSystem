@@ -25,6 +25,8 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
     protected boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+
         // 放行 options 请求
         if (HttpMethod.OPTIONS.toString().equals((httpServletRequest).getMethod())) {
             httpServletResponse.setStatus(HttpStatus.NO_CONTENT.value());

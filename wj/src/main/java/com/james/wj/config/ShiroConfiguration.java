@@ -1,5 +1,6 @@
 package com.james.wj.config;
 
+import com.james.wj.filter.CORSFilter;
 import com.james.wj.filter.URLPathMatchingFilter;
 import com.james.wj.realm.WJRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -12,9 +13,11 @@ import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -39,10 +42,9 @@ public class ShiroConfiguration {
 
         customizedFilter.put("url", getURLPathMatchingFilter());
 
-        filterChainDefinitionMap.put("/api/authentication", "authc");
-        filterChainDefinitionMap.put("/api/menu", "authc");
+        filterChainDefinitionMap.put("/api/authentication", "user");
+        filterChainDefinitionMap.put("/api/menu", "user");
         filterChainDefinitionMap.put("/api/admin/**", "authc");
-
 
         filterChainDefinitionMap.put("/api/admin/**", "url");
 
@@ -87,10 +89,9 @@ public class ShiroConfiguration {
     public CookieRememberMeManager rememberMeManager() {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
-        cookieRememberMeManager.setCipherKey("EVERYTHING_WILL_BE_GOOD".getBytes());
+        cookieRememberMeManager.setCipherKey("EVANNIGHTLY_WAOU".getBytes());
         return cookieRememberMeManager;
     }
-
 
 
     public SimpleCookie rememberMeCookie() {
@@ -101,6 +102,24 @@ public class ShiroConfiguration {
 
     public URLPathMatchingFilter getURLPathMatchingFilter() {
         return new URLPathMatchingFilter();
+    }
+
+
+    @Bean
+    public FilterRegistrationBean replaceTokenFilter(){
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setDispatcherTypes(DispatcherType.REQUEST);
+        registration.setFilter(getCORSFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("CrosFilter");
+        registration.setOrder(1);
+        return registration;
+    }
+
+
+
+    public CORSFilter getCORSFilter() {
+        return new CORSFilter();
     }
 
 }

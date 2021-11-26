@@ -1,12 +1,12 @@
 package com.james.wj.controller;
 
-import com.james.wj.pojo.AdminMenu;
+import com.james.wj.result.Result;
+import com.james.wj.result.ResultFactory;
 import com.james.wj.service.AdminMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 public class MenuController {
@@ -17,7 +17,7 @@ public class MenuController {
 
 
     @GetMapping("/api/menu")
-    public List<AdminMenu> menu() {
-        return adminMenuService.getMenusByCurrentUser();
+    public Result menu() {
+        return ResultFactory.buildSuccessResult(adminMenuService.getMenusByCurrentUser());
     }
 }
