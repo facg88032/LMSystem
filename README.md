@@ -20,3 +20,5 @@ ORM 採用JPA
 5. 用戶權限部分採用角色賦與
 6. 基本CRUD 操作書籍管理
 
+成果
+![](https://github.com/facg88032/LMSystem/blob/master/web.gif)
